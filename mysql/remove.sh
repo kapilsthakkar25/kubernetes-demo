@@ -10,4 +10,4 @@ kubectl delete -n $ns -f mysql-pv.yml
 kubectl delete namespace $ns
 
 # delete directories from mount
-# rm -rf /var/devops/mysql-pv
+#rm -rf /var/devops/mysql-pv
