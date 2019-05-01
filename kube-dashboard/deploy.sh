@@ -6,6 +6,7 @@ ns=kube-system
 kubectl create -n $ns -f kubernetes-dashboard.yaml --validate=false
 kubectl create -n $ns -f sa-admin.yml --validate=false
 kubectl create -n $ns -f dashboard-admin.yml --validate=false
+kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 
 kubectl -n kube-system get secret | grep kubernetes-dashboard-token | awk '{print "secret/"$1}' | xargs kubectl describe -n kube-system
 kubectl -n kube-system get secret | grep kubernetes-dashboard-token | awk '{print "secret/"$1}' | xargs kubectl describe -n kube-system > token.txt
